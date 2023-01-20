@@ -1,0 +1,40 @@
+plugins {
+    id 'scala'
+    id 'application'
+    id "org.openjfx.javafxplugin" version "0.0.13"
+}
+
+group 'com.github.eugene'
+version '1.0-SNAPSHOT'
+
+application {
+    mainClass = 'com.example.Main'
+}
+
+javafx {
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+//    configuration = 'compileOnly'
+}
+
+ext {
+    scalaBaseVersion = '3'
+    scalaVersion = "${scalaBaseVersion}.2.1"
+    junitVersion = '5.8.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation "org.scala-lang:scala3-library_3:${scalaVersion}"
+    testImplementation 'org.scalatest:scalatest_3:3.2.15'
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
